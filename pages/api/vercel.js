@@ -1,4 +1,5 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import { orderBy } from "lodash";
 
 export default async (req, res) => {
   var axios = require("axios");
@@ -15,12 +16,12 @@ export default async (req, res) => {
 
   await axios(config)
     .then(function (response) {
-      res.send(response.data.deployments.slice(0, 5).map(({ name, state, meta, created}) => ({
+      res.send(orderBy(response.data.deployments.slice(0, 5).map(({ name, state, meta, created}) => ({
         name,
         state,
         meta,
         created
-      })));
+      }))), "created");
     })
     .catch(function (error) {
       res.send(error);
