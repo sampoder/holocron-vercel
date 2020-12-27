@@ -1,2 +1,2 @@
-# Hack Club Slack on Jedi Challenges
+# Vercel on Jedi Challenges
 
